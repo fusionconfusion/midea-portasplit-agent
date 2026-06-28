@@ -1,0 +1,37 @@
+name: 🧊 Midea PortaSplit — Agent de surveillance
+
+on:
+  schedule:
+    # Toutes les 15 minutes, entre 7h et 22h (heure Paris = UTC+2 en été)
+    # GitHub Actions utilise UTC — 7h Paris = 5h UTC, 22h Paris = 20h UTC
+    - cron: "0,15,30,45 5-20 * * *"
+
+  # Permet aussi de lancer manuellement depuis l'onglet Actions
+  workflow_dispatch:
+
+jobs:
+  check-stock:
+    name: Vérification des stocks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 📦 Installer les dépendances
+        run: npm install
+
+      - name: 🔍 Lancer l'agent de surveillance
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EMAIL_FROM:        ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO:          ${{ secrets.EMAIL_TO }}
+          GMAIL_APP_PASS:    ${{ secrets.GMAIL_APP_PASS }}
+          NTFY_TOPIC:        ${{ secrets.NTFY_TOPIC }}
+        run: node agent.js

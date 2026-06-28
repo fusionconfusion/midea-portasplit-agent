@@ -1,0 +1,16 @@
+{
+  "name": "midea-portasplit-agent",
+  "version": "1.0.0",
+  "description": "Agent de surveillance de stock pour le Midea PortaSplit",
+  "main": "agent.js",
+  "scripts": {
+    "start": "node agent.js",
+    "test": "node agent.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
