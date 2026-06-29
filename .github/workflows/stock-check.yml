@@ -4,7 +4,7 @@ on:
   schedule:
     # Toutes les 15 minutes, entre 7h et 00h (heure Paris = UTC+2 en été)
     # GitHub Actions utilise UTC — 7h Paris = 5h UTC, 00h Paris = 22h UTC
-    - cron: "0,15,30,45 5-22 * * *"
+    - cron: "*/15 5-22 * * *"
 
   # Permet aussi de lancer manuellement depuis l'onglet Actions
   workflow_dispatch:
