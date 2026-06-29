@@ -87,3 +87,5 @@ Pour modifier la fréquence, édite le fichier `.github/workflows/stock-check.ym
 | Boulanger Parly 2 (Le Chesnay) | ~19 km |
 | Darty Cergy | ~22 km |
 | Leroy Merlin Bois-d'Arcy (Versailles) | ~25 km |
+
+
